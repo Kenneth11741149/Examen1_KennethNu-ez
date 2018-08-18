@@ -37,6 +37,7 @@ int main(){
 	int playeronepieces = 1;
 	int playertwopieces = 1;
 	bool playable = true;
+	cout << "El programa no esta ni en lo mas minimo terminado. ALERTA DE QUE NADA SIRVE" << endl;
 	cout << "Bienvienido al Lab de Kenneth" << endl;
 	cout << "	Menu" << endl;
 
@@ -56,15 +57,22 @@ int main(){
 			ground[0][10] = '#';
 			print(ground);
 			char coords[5];
+			string cordenation = "";
+			string cordenation2 = "";
 			char coords2[5];
+			//char coords2[5];
 			while(playable){
 				bool posible = false;
 				while(posible == false){
 					cout << "ACTUAL: " << endl;
 					cin >> coords;
-					cout << "Futura: " << endl;
+					// cin >> coords
+					cout << "Futuro: " << endl;
 					cin >> coords2;
-					if(coords[0] == 'A' || coords[0] == 'B' || coords[0] == 'C' || coords[0] == 'D' || coords[0] == 'E' || coords[0] == 'F' || coords[0] == 'G' || coords[0] == 'H' || coords[0] == 'I' || coords[0] == 'J' || coords[0] == 'K'){
+					// cin >> cordenation2;
+					int letter = -1;
+
+					if( letter >= 0 && letter <= 10){
 					if(intvalidator(coords)){
 							char numeral[2];
 							numeral[0] = coords[1];
@@ -72,24 +80,18 @@ int main(){
 							realnumber = atoi(numeral);
 							cout <<"realnumber" <<  realnumber << endl;
 
-							if(coords2[0] == 'A' || coords[0] == 'B' || coords[0] == 'C' || coords[0] == 'D' || coords[0] == 'E' || coords[0] == 'F' || coords[0] == 'G' || coords[0] == 'H' || coords[0] == 'I' || coords[0] == 'J' || coords[0] == 'K'){
+							if(   letter >= 0 ){
 
 								if(intvalidator(coords2)){
-									char numeral2[3];
+									char numeral2[5];
 									numeral2[0] = coords2[1];
 									numeral2[1] = coords2[2];
 									realnumber2 = atoi(numeral2);
 									cout << "Second real " << realnumber << "Fin"<< endl;
-									if(coords[1] > 10 || coords[2] > 10 || coords[1] < 0 || coords[2] < 0 
-								        || coords2[1] > 10 || coords2[2] > 10 || coords2[1] < 0 || coords2[2] < 0){
-												
-									 	cout << "Invalid entry numbers too high or too low" << endl;
-										cout << coords[1] << "L"  << coords[2] << "K" <<endl;
-										cout << coords2[1] << "L2" << coords[2] << "K2" << endl;
-									} else {
-										ground = piezaval('+',coords[1],coords[2],coords2[1],coords2[2],ground);	
-										print(ground);
-									}
+
+									ground = piezaval('+',coords[1],coords[2],coords2[1],coords2[2],ground);	
+									print(ground);
+									
 
 								}
 							} else {
@@ -149,6 +151,9 @@ void deleteground(char** matriz){
 }
 
 char** piezaval(char piece, int c1, int c2, int c3, int c4, char** ground){	
+	cout << c1 << c2 << c3 << c4 << endl;
+	cout << "pirateria" << endl;
+
 	if(ground[c1][c2] == piece && ground[c3][c4] != piece) {
 		if( c3 == c1 || c3 == c1+1 || c3 == c1-1 ||  c3 == c1 + 2 || c3 == c1 - 2 ){
 			if(c4 == c2 || c4 == c2+1 || c4 == c2-1 || c4 == c2 + 2 || c4 == c2 -2){
@@ -162,7 +167,7 @@ char** piezaval(char piece, int c1, int c2, int c3, int c4, char** ground){
 		}
 
 	} else {
-		
+		cout << "ERROR FATAL" << endl;
 	}
 	return ground;
 }
